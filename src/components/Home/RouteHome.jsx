@@ -3,7 +3,11 @@ import Home from "../Home/Home";
 
 class RouteHome extends React.Component {
     render() {
-        return <Home />;
+        return (
+            <div>
+                <p>Home Screen</p>
+            </div>
+        )
     }
 }
 
