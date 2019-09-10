@@ -1,8 +1,9 @@
 import React from "react";
+import Home from "../Home/Home";
 
 class RouteHome extends React.Component {
     render() {
-        return <h1>Home.</h1>;
+        return <Home />;
     }
 }
 
