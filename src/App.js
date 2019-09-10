@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import RouteHome from "./components/RouteHome";
-import RouteEdit from "./components/RouteEdit";
-import RouteWheel from "./components/RouteWheel";
+import RouteHome from "./components/Home/RouteHome";
+import RouteEdit from "./components/Edit/RouteEdit";
+import RouteWheel from "./components/Wheel/RouteWheel";
 
 function App() {
   return (
