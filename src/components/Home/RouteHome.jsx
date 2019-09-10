@@ -1,5 +1,6 @@
 import React from "react";
 import SplashScreen from "./SplashScreen/SplashScreen";
+import WheelsList from "./WheelsList/WheelsList";
 
 class RouteHome extends React.Component {
     constructor(props) {
@@ -17,9 +18,10 @@ class RouteHome extends React.Component {
 
     render() {
         return(
-            (this.state.splashScreen &&
-                <SplashScreen/>
-            )
+            <div>
+                {this.state.splashScreen && <SplashScreen/>}
+                <WheelsList/>
+            </div>
         );
     }
 }
