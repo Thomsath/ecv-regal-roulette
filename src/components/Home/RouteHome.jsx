@@ -1,5 +1,7 @@
 import React from "react";
 import SplashScreen from "./SplashScreen/SplashScreen";
+import Header from "./Header/Header";
+import Content from "./Content/Content";
 import {getRestaurants, mapUserCategoriesToFoursquareCategories} from "../../foursquareApi/FoursquareApi";
 import {extractRandomItemFromArray} from "../../utils/Array";
 import restaurantIcon from '../../restaurant.svg'
@@ -77,6 +79,9 @@ class RouteHome extends React.Component {
     render() {
         const selectedRestaurant = this.state.selectedRestaurant ? this.state.selectedRestaurant.name : '';
         return(
+            <>
+                <Header/>
+                <Content/>
             <div className={'yellow'}>
                 <div className={'questions-container'}>
                     <h2 className={'question-title'}>
@@ -216,6 +221,7 @@ class RouteHome extends React.Component {
                     <h1>{selectedRestaurant}</h1>
                 </div>
             </div>
+            </>
         );
     }
 }
