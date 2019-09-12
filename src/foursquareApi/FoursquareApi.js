@@ -15,25 +15,37 @@ const instanceFoursquare = axios.create({
     baseURL: "https://api.foursquare.com/v2/venues/"
 });
 
-export const getRestaurants = async (selectedCategories, availableTime, budget) => {
-    let categories = CATEGORY;
-    if(selectedCategories){
-        categories = selectedCategories.join(',');
-    }
+export const getRestaurants = async (selectedCategories = null, availableTime = null, budget = null) => {
+    let categories = selectedCategories ? selectedCategories.join(',') : CATEGORY;
+    let radius = availableTime ? determineMaxDistanceAccordingToUserTime(availableTime) : RADIUS;
     const currentGeolocation = await getCurrentGeolocation();
     const urlParameters = "client_id=" + CLIENT_ID
         + "&client_secret=" + CLIENT_SECRET
         + "&v=" + VERSION_DATE
         + "&ll=" + currentGeolocation.coords.latitude + "," + currentGeolocation.coords.longitude
         + "&intent=" + INTENT
-        + "&radius=" + RADIUS
+        + "&radius=" + radius
         + "&limit=" + LIMIT
         + "&categoryId=" + categories;
     return instanceFoursquare.get("search?" + urlParameters);
 };
 
 const determineMaxDistanceAccordingToUserTime = (userTime) => {
-
+    let radius = 5000;
+    switch (userTime) {
+        case 'cheetah':
+            radius = 500;
+            break;
+        case 'rabbit':
+            radius = 2000;
+            break;
+        case 'turtle':
+            radius = 10000;
+            break;
+        default:
+            radius = 5000;
+    }
+    return radius;
 };
 
 

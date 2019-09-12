@@ -30,7 +30,6 @@ class RouteHome extends React.Component {
             .then(apiResponse => {
                 const restaurants = apiResponse.data.response.venues;
                 const randomRestaurant = extractRandomItemFromArray(restaurants);
-                console.log(randomRestaurant);
                 this.setState({
                     restaurants: restaurants,
                     selectedRestaurant: randomRestaurant
