@@ -1,25 +1,24 @@
 import React from "react";
 import SplashScreen from "./SplashScreen/SplashScreen";
 import Header from "./Header/Header";
-import Content from "./Content/Content";
 import {getRestaurants, mapUserCategoriesToFoursquareCategories} from "../../foursquareApi/FoursquareApi";
 import {extractRandomItemFromArray} from "../../utils/Array";
-import restaurantIcon from '../../restaurant.svg'
-import timeIcon from '../../time.svg'
-import checkIcon from '../../check.svg'
-import moneyIcon from '../../money.svg'
-import cheetahImg from '../../cheetah.svg'
-import rabbitImg from '../../rabbit.svg'
-import turtleImg from '../../turtle.svg'
-import japaneseImg from '../../japanese.svg'
-import italianImg from '../../italian.svg'
-import hotdogImage from '../../hotdog.svg'
-import brazilianImg from '../../brazilian.svg'
-import sandwichImg from '../../sandwich.svg'
-import saladsImg from '../../salads.svg'
-import soupsImg from '../../soups.svg'
-import gastronomicImg from '../../gastronomic.svg'
-import pizzaImg from '../../pizza.svg'
+import restaurantIcon from '../../assets/img/restaurant.svg'
+import timeIcon from '../../assets/img/time.svg'
+import checkIcon from '../../assets/img/check.svg'
+import moneyIcon from '../../assets/img/money.svg'
+import cheetahImg from '../../assets/img/cheetah.svg'
+import rabbitImg from '../../assets/img/rabbit.svg'
+import turtleImg from '../../assets/img/turtle.svg'
+import japaneseImg from '../../assets/img/japanese.svg'
+import italianImg from '../../assets/img/italian.svg'
+import hotdogImage from '../../assets/img/hotdog.svg'
+import brazilianImg from '../../assets/img/brazilian.svg'
+import sandwichImg from '../../assets/img/sandwich.svg'
+import saladsImg from '../../assets/img/salads.svg'
+import soupsImg from '../../assets/img/soups.svg'
+import gastronomicImg from '../../assets/img/gastronomic.svg'
+import pizzaImg from '../../assets/img/pizza.svg'
 
 class RouteHome extends React.Component {
     constructor(props) {
@@ -35,7 +34,6 @@ class RouteHome extends React.Component {
     }
 
     componentDidMount() {
-        // this.apiGetRestaurants();
         setTimeout(() => {
             this.setState({
                 splashScreen: false
@@ -81,146 +79,127 @@ class RouteHome extends React.Component {
         return(
             <>
                 <Header/>
-                <Content/>
-            <div className={'yellow'}>
-                <div className={'questions-container'}>
-                    <h2 className={'question-title'}>
-                        <img src={timeIcon} alt=""/>
-                        <span>Combien de temps as-tu pour manger ?</span>
-                    </h2>
-                    <label className={'question-choice small top'}>
-                        <img src={cheetahImg} alt=""/>
-                        <input type="radio" name="userTime" value="cheetah"
-                               onChange={(event) => this.setState({ userTime: event.target.value })} />
-                        <span className={'question-select-effect'}>
+                <main>
+                    <div className={'home-container'}>
+                        <span className={'home-title'}>Bienvenue !</span>
+                        <p className={'home-description'}>
+                            Réponds à quelques questions afin de trouver le restaurant qui répond à tes besoins.
+                        </p>
+                    </div>
+                    <div className={'yellow-container'}>
+                        <div className={'questions-container'}>
+                            <h2 className={'question-title'}>
+                                <img src={timeIcon} alt=""/>
+                                <span>Combien de temps as-tu pour manger ?</span>
+                            </h2>
+                            <label className={'question-choice small top'}>
+                                <img src={cheetahImg} alt=""/>
+                                <input type="radio" name="userTime" value="cheetah"
+                                       onChange={(event) => this.setState({ userTime: event.target.value })} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice small'}>
-                        <img src={rabbitImg} alt=""/>
-                        <input type="radio" name="userTime" value="rabbit"
-                               onChange={(event) => this.setState({ userTime: event.target.value })} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice small'}>
+                                <img src={rabbitImg} alt=""/>
+                                <input type="radio" name="userTime" value="rabbit"
+                                       onChange={(event) => this.setState({ userTime: event.target.value })} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice small'}>
-                        <img src={turtleImg} alt=""/>
-                        <input type="radio" name="userTime" value="turtle"
-                               onChange={(event) => this.setState({ userTime: event.target.value })} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice small'}>
+                                <img src={turtleImg} alt=""/>
+                                <input type="radio" name="userTime" value="turtle"
+                                       onChange={(event) => this.setState({ userTime: event.target.value })} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                </div>
-                <hr/>
-                <div className={'questions-container'}>
-                    <h2 className={'question-title'}>
-                        <img src={restaurantIcon} alt=""/>
-                        <span>Quelles sont tes envies ?</span>
-                    </h2>
-                    <label className={'question-choice big'}>
-                        <img src={japaneseImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />                        <span className={'question-select-effect'}>
+                            </label>
+                        </div>
+                        <div className={'questions-container'}>
+                            <h2 className={'question-title'}>
+                                <img src={restaurantIcon} alt=""/>
+                                <span>Quelles sont tes envies ?</span>
+                            </h2>
+                            <label className={'question-choice big'}>
+                                <img src={japaneseImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />                        <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={hotdogImage} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={hotdogImage} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={italianImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={italianImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={brazilianImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={brazilianImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={gastronomicImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={gastronomicImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={pizzaImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={pizzaImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={saladsImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={saladsImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={sandwichImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={sandwichImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                    <label className={'question-choice big'}>
-                        <img src={soupsImg} alt=""/>
-                        <input type="checkbox" name="userCategories" value="italian"
-                               onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
-                        <span className={'question-select-effect'}>
+                            </label>
+                            <label className={'question-choice big'}>
+                                <img src={soupsImg} alt=""/>
+                                <input type="checkbox" name="userCategories" value="italian"
+                                       onChange={(event) => this.pushSelectedUserCategoryToCategories(event)} />
+                                <span className={'question-select-effect'}>
                             <img src={checkIcon} alt=""/>
                         </span>
-                    </label>
-                </div>
-                <hr/>
-                <div>
-                    <p>Quel est ton budget ?</p>
-                    <label>
-                        Moins de 10€
-                        <input type="radio" name="userBudget" value="lessTen"
-                               onChange={(event) => this.setState({ userBudget: event.target.value })} />
-                    </label>
-                    <label>
-                        Entre 10€ et 20€
-                        <input type="radio" name="userBudget" value="tenTwenty"
-                               onChange={(event) => this.setState({ userBudget: event.target.value })} />
-                    </label>
-                    <label>
-                        Entre 20€ et 30€
-                        <input type="radio" name="userBudget" value="twentyThirty"
-                               onChange={(event) => this.setState({ userBudget: event.target.value })} />
-                    </label>
-                    <label>
-                        Plus de 30€
-                        <input type="radio" name="userBudget" value="moreThirty"
-                               onChange={(event) => this.setState({ userBudget: event.target.value })} />
-                    </label>
-                </div>
-                <hr/>
-                <div>
-                    <button onClick={() => this.apiGetRestaurants()}>GO !</button>
-                    <h1>{selectedRestaurant}</h1>
-                </div>
-            </div>
+                            </label>
+                        </div>
+                        <div>
+                            <button className={'button'} onClick={() => this.apiGetRestaurants()}>GO !</button>
+                            <h1>{selectedRestaurant}</h1>
+                        </div>
+                    </div>
+                </main>
             </>
         );
     }
