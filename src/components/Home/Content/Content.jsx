@@ -4,15 +4,24 @@ import './Content.css';
 class Content extends React.Component {
     render() {
         return (
-            <main>
+            <>
+                <main>
 
-                <span className={'home-title'}>Bienvenue !</span>
+                    <span className={'home-title'}>Bienvenue !</span>
 
-                <p className={'home-description'}>
-                    Réponds à quelques questions afin de trouver le restaurant qui répond à tes besoins.
-                </p>
+                    <p className={'home-description'}>
+                        Réponds à quelques questions afin de trouver le restaurant qui répond à tes besoins.
+                    </p>
 
-            </main>);
+
+
+                <div className={"yellow-container"}>
+
+                </div>
+                </main>
+            </>
+
+        );
     }
 }
 

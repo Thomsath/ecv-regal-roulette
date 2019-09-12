@@ -10,7 +10,7 @@ body {
     flex-direction: column;
     overflow: auto;
     background: url("assets/img/home-right-corner.svg") no-repeat right;
-    background-position-x: 225px;
-    background-position-y: -35px;
+    background-position-x: 230px;
+    background-position-y: -52px;
 
 }
