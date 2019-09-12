@@ -15,8 +15,8 @@ const instanceFoursquare = axios.create({
     baseURL: "https://api.foursquare.com/v2/venues/"
 });
 
-export const getRestaurants = async (selectedCategories = null, availableTime = null, budget = null) => {
-    let categories = selectedCategories ? selectedCategories.join(',') : CATEGORY;
+export const getRestaurants = async (selectedCategories, availableTime, budget = null) => {
+    let categories = selectedCategories.length > 0 ? selectedCategories.join(',') : CATEGORY;
     let radius = availableTime ? determineMaxDistanceAccordingToUserTime(availableTime) : RADIUS;
     const currentGeolocation = await getCurrentGeolocation();
     const urlParameters = "client_id=" + CLIENT_ID
@@ -46,6 +46,28 @@ const determineMaxDistanceAccordingToUserTime = (userTime) => {
             radius = 5000;
     }
     return radius;
+};
+
+export const mapUserCategoriesToFoursquareCategories = (userCategory) => {
+    let foursquareCategory = '';
+    switch (userCategory) {
+        case 'italian':
+            foursquareCategory = '4bf58dd8d48988d110941735';
+            break;
+        case 'burgers':
+            foursquareCategory = '4bf58dd8d48988d16c941735';
+            break;
+        case 'thai':
+            foursquareCategory = '4bf58dd8d48988d149941735';
+            break;
+        case 'asian':
+            foursquareCategory = '4bf58dd8d48988d142941735';
+            break;
+        case 'food':
+            foursquareCategory = '4d4b7105d754a06374d81259';
+            break;
+    }
+    return foursquareCategory;
 };
 
 
