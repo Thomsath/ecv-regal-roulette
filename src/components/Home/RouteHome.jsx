@@ -1,5 +1,7 @@
 import React from "react";
 import SplashScreen from "./SplashScreen/SplashScreen";
+import Header from "./Header/Header";
+import Content from "./Content/Content";
 
 class RouteHome extends React.Component {
     constructor(props) {
@@ -17,9 +19,10 @@ class RouteHome extends React.Component {
 
     render() {
         return(
-            (this.state.splashScreen &&
-                <SplashScreen/>
-            )
+            <>
+            <Header/>
+            <Content/>
+          </>
         );
     }
 }
